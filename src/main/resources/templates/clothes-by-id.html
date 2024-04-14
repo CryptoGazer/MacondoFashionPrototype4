@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title th:text="${title}"></title>
+    <link rel="icon" type="image/ico" th:href="@{/static/favicon.ico}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/dfb84ec876.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header th:insert="~{blocks/header :: header}"></header>
+
+    <!--padding-right percentage will after all depend on the longest line of the following text under the h1 label-->
+
+    <div th:insert="~{blocks/sidebar-filter :: sidebarFilter (sex=${sex}, clothesNames=${clothesNames}, accessoriesNames=${accessoriesNames})}"></div>
+
+    <div class="container">
+        <a class="btn" th:href="'/' + ${sex} + '/' + ${linkProductCategory}">
+            <i class="fa-solid fa-chevron-left fa-2xl" style="color: #000000; margin-left: 9pt;"></i>
+        </a>   
+    </div>
+
+    <form th:action="'/' + ${sex} + '/' + ${productName} + '/' + ${productId} + '/add-to-cart'" method="post">
+    <!-- <form action="/men/hoodies/67" method="post"> -->
+    <div class="container" style="padding-left: 150px;">
+        <div style="padding: 20px; width: 900px; overflow: hidden;">
+            
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img th:src="'/images/' + ${image.getId()}" alt=""
+                            style="max-height: 2000px; padding-bottom: 0px;
+                            width: 100%; height: auto; display: block;">
+                        </td>
+                        <td style="padding-left: 60px;">
+                            <div class="container mt-4" style="max-width: 1000px;">
+                                <ul class="product-card-elements">
+                                    <li>
+                                        <h1 th:text="${name}" id="targetName"></h1>
+                                    </li>
+                                    <li>
+                                        <h1 th:text="${price} + '$'"></h1>
+                                    </li>
+                                    <li>
+                                        <div class="incr-wrap fs-4 mt-2">
+                                            <span>
+                                                <button class="btn btn-outline-secondary" id="buyButton" type="submit">
+                                                    <h2 class="text-dark">BUY</h2>
+                                                </button>
+                                            </span>
+                                            <span class="val" id="quantityLabel">
+                                                <label for="quantity" id="quantityLabel"></label>
+                                                <input class="input-group-append" type="number"
+                                                min="1" th:max="${productQuantity}" value="1" 
+                                                id="quantity" name="quantityInp" placeholder="quantity">
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li style="padding-top: 13px; width: 200px;">
+                                        <i><h5 th:text="'(in stock: ' + ${productQuantity} + ')'" id="maxProductQuantity"></h5></i>
+                                    </li>
+                                    <br>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </form>
+ 
+    <div th:insert="~{blocks/footer :: footer}"></div>
+</body>
+
+<script th:inline="javascript">
+    window.onload = function() {
+        var targetElementWidth = document.getElementById('targetName').offsetWidth - 55;
+        var targetElementHeight = document.getElementById('buyButton').offsetHeight;
+        document.getElementById('buyButton').style.width = targetElementWidth + 'px';
+        document.getElementById('quantityLabel').style.height = targetElementHeight + 'px';
+    };
+</script>
+
+<style>
+    body {
+        font-family: monospace;
+    }
+
+    header {
+        position: sticky;
+        top: 0;
+        background: #fff;
+        z-index: 3;
+    }
+
+    ul {
+        padding-top: 0;
+        margin-top: 0;
+        list-style-type: none;
+    }
+
+    .product-card-elements li {
+        text-align: center;
+    }
+
+    .btn {
+        display: inline-block;
+    }
+
+    .input-group-append {
+        width: 50px;
+        border-radius: 0.375rem;
+        border-width: 1px;
+        margin-left: 5px;
+        position: absolute;
+    }
+</style>
+
+</html>

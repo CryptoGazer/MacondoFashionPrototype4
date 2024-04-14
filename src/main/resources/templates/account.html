@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title th:text="${title}"></title>
+    <link rel="icon" type="image/ico" th:href="@{/static/favicon.ico}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/dfb84ec876.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+    <header th:insert="~{blocks/header :: header}"></header>
+
+    <!--padding-right percentage will after all depend on the longest line of the following text under the h1 label-->
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col" style="display: grid; justify-content: center; padding-right: 5rem;">
+                <ul>
+                    <li>
+                        <h1>Hello, dear Customer!</h1>
+                    </li>
+                    <hr>
+                    <li>
+                        <h5><i>Information about Your Profile</i></h5>
+                    </li>
+                    <hr>
+                    <li>
+                        <h3 th:text="'Name: ' + ${user.getName()}"></h3>
+                    </li>
+                    <br>
+                    <li>
+                        <h3 th:text="'Email: ' + ${user.getEmail()}"></h3>
+                    </li>
+                    <br>
+                    <li>
+                        <h3 th:text="'Registration Date: ' + ${user.getFormattedDatetimeRegistered()}"></h3>
+                    </li>
+                    <br>
+                    <li>
+                        <h3 th:text="'Total Bought: ' + ${user.getTotalBought()}"></h3>
+                    </li>
+                    <br>
+                    <li>
+                        <h3 th:text="'Total Spent: ' + ${user.getTotalSpent()} + '$'"></h3>
+                    </li>
+                    <hr><br>
+                </ul>
+            </div>
+            <div class="col" style="display: grid; justify-content: center; padding-left: 2rem;">
+              <ul style="display: grid; align-items: center; align-content: center;">
+                <li style="padding-top: 15px;">
+                    <a class="btn btn-outline-secondary" th:href="'/cart/' + ${username}" style="width: 171.24px;"><h2>Cart</h2></a>
+                </li>
+                <li style="padding-top: 15px;">
+                    <a class="btn btn-outline-secondary" onclick="goBack()" style="width: 171.24px;"><h2>Back</h2></a>
+                </li>
+                <li style="padding-top: 15px;">
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#confirmRemove" style="width: 171.24px; height: 53px;">Delete Profile</button>
+                    <div class="modal fade" id="confirmRemove" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmRemoveLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="confirmRemoveLabel" th:utext="'Are you sure you want to delete your profile?'"></h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <form th:action="'/profile/' + ${username}" method="post">
+                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+              </ul>
+            </div>
+        </div>
+        
+    </div>
+ 
+    <div th:insert="~{blocks/footer :: footer}"></div>
+</body>
+
+<script>
+   function goBack() {
+        window.history.back();
+    }
+</script>
+
+<style>
+    body {
+        font-family: monospace;
+    }
+
+    header {
+        position: sticky;
+        top: 0;
+        background: #fff;
+        z-index: 3;
+    }
+
+    ul {
+        padding-top: 0;
+        margin-top: 0;
+        list-style-type: none;
+    }
+
+    .product-card-elements li {
+        text-align: center;
+    }
+
+    .btn {
+        display: inline-block;
+    }
+
+    .input-group-append {
+        width: 50px;
+        border-radius: 0.375rem;
+        border-width: 1px;
+        margin-left: 5px;
+        position: absolute;
+    }
+</style>
+
+</html>

@@ -1,0 +1,24 @@
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: monospace;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.accordion {
+    --bs-accordion-border-color: none;
+    --bs-accordion-active-bg: none;
+    --bs-accordion-btn-active-icon: none;
+    --bs-accordion-btn-icon: none;
+    --bs-accordion-body-padding-x: 7px;
+}
+
+a.text-dark {
+    margin-left: 1.8rem;
+}
+li{
+    margin-bottom: 10px;
+}

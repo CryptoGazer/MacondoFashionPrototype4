@@ -1,0 +1,15 @@
+<div th:fragment="double-choice (btnLeft, btnRight, btnLeftCap, btnRightCap)">
+    <div class="d-flex mt-5 justify-content-center">
+        <div class="hstack gap-5">
+            <p>
+                <a type="button" class="fs-1 btn btn-outline-dark" style="--bs-border-width: 0px" th:href="'/' + ${btnLeft}" th:text="${btnLeftCap}"></a>
+            </p>
+            <div class="d-flex" style="height: 22rem;">
+                <div class="vr"></div>
+            </div>
+            <p>
+                <a type="button" class="fs-1 btn btn-outline-dark" style="--bs-border-width: 0px" th:href="'/' + ${btnRight}" th:text="${btnRightCap}"></a>
+            </p>
+        </div>
+    </div>
+</div>

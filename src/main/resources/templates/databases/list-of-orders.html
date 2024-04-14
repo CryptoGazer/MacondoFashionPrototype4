@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title th:text="${title}"></title>
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+<header th:insert="~{blocks/header :: header}"></header>
+
+<!--padding-right percentage will after all depend on the longest line of the following text under the h1 label-->
+<div class="container mt-5" style="padding-left: 3rem; padding-right: 23%">
+    <h1 class="head-border-bottom" style="white-space: pre">Transactions database page</h1>
+    <br>
+    <ul>
+        <li>
+            <a class="text-dark" href="/admin">
+                <h4>Return to the Previous Page</h4>
+            </a>
+        </li>
+        <li>
+            <h1>
+                Show the List of Orders (Transactions)
+            </h1>
+            <ul>
+                <li style="list-style: none;">
+                    <a class="btn btn-outline-secondary" href="/admin/list-of-orders/show-list-of-orders">Show</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h1>
+                Show Information about<br>the Existing Transaction <i>(by transactionID)</i>
+            </h1>
+            <ul>
+                <li style="list-style: none;">
+                    <form action="/admin/list-of-orders" method="post">
+                        <div class="input-group mb-3">
+                            <label for="retrieveForDisplayByTransactionID"></label><input id="retrieveForDisplayByTransactionID" type="text" class="form-control" placeholder="Insert transactionID" aria-label="retrieveForDisplayByTransactionID" aria-describedby="basic-addon2">
+                            <button class="btn btn-outline-secondary" type="button" onclick="retrieveForDisplayDataByTransactionID()">Submit</button>
+                        </div>      
+                    </form>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    
+</div>
+
+<div th:insert="~{blocks/footer :: footer}"></div>
+
+
+
+</body>
+
+<script>
+    function retrieveForDisplayDataByTransactionID() {
+        var attributeValue = document.getElementById("retrieveForDisplayByTransactionID").value;
+        window.location.href = "/admin/list-of-orders/" + attributeValue;
+    }
+</script>
+
+<style>
+    body {
+        font-family: monospace;
+    }
+
+    header {
+        position: sticky;
+        top: 0;
+        background: #fff;
+        z-index: 3;
+    }
+
+    .head-border-bottom {
+        border-bottom: 3px solid darkseagreen;
+    }
+
+    ul {
+        list-style: square;
+        /* font-size: 2rem; */
+    }
+
+    li {
+        padding-top: 15px;
+        white-space: nowrap;
+        font-size: 2rem;
+    }
+
+    button {
+        white-space: nowrap;
+    }
+
+    .btn-outline-secondary {
+        --bs-border-radius: 0;
+        --bs-btn-font-size: 1.4rem;
+        --bs-btn-padding-x: 1em;
+        --bs-btn-padding-y: 0.7rem;
+        width: 8rem;
+    }
+
+    .form-control {
+        font-size: 1.25rem;
+        --bs-border-radius: 0;
+    }
+</style>
+
+</html>

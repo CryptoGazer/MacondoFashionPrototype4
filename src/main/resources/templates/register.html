@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}">
+</head>
+<body>
+    <header th:insert="~{blocks/header :: header}"></header>
+
+    <div class="container" style="display: grid; justify-content: center;">
+        <div class="row align-items-center">
+            <div class="col-4" style="width: 100%;">
+                <br>
+                <h2>Registration</h2>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="display: grid; justify-content: center;">
+        <form action="/register/save" method="post">
+            <div class="row">
+                <div class="col" style="display: grid; justify-content: center; padding-right: 5rem;">
+                  <ul>
+                    <li>
+                        <li>
+                            <div class="input-group mb-3">
+                                <label for="email"></label><input type="email" class="form-control" id="email" name="email" placeholder="Insert Email" required aria-label="Insert Email" aria-describedby="basic-addon2">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="input-group mb-3">
+                                <label for="name"></label><input type="text" class="form-control" id="name" name="name" placeholder="Insert Name" required aria-label="Insert Name" aria-describedby="basic-addon2">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="input-group mb-3">
+                                <label for="password"></label><input type="password" class="form-control" id="password" name="password" placeholder="Insert Password" required aria-label="Insert Password" aria-describedby="basic-addon2">
+                            </div>
+                            <input type="checkbox" id="showPasswordCheckbox" onclick="togglePasswordVisibility()"><label for="showPasswordCheckbox" style="margin-left: 15px;">show password</label>
+                        </li>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col" style="display: grid; justify-content: center; padding-left: 2rem;">
+                  <ul style="display: grid; align-items: center; align-content: center;">
+                    <li style="padding-bottom: 15px;">
+                        <button class="btn btn-outline-secondary" type="submit"><h2>Register</h2></button>
+                    </li>
+                    <li style="padding-top: 15px;">
+                        <a class="btn btn-outline-secondary" onclick="goBack()" style="width: 171.24px;"><h2>Back</h2></a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div th:insert="~{blocks/footer :: footer}"></div>
+</body>
+
+<script>
+    function togglePasswordVisibility() {
+        var password = document.getElementById("password");
+        var repeatPassword = document.getElementById("repeatPassword");
+        var showPasswordCheckbox = document.getElementById("showPasswordCheckbox");
+        if (showPasswordCheckbox.checked) {
+            password.type = "text";
+            repeatPassword.type = "text";
+        } else {
+            password.type = "password";
+            repeatPassword.type = "password";
+        }
+    }
+
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+<style>
+    header {
+        position: sticky;
+        top: 0;
+        background: #fff;
+        z-index: 3;
+    }
+    .head-border-bottom {
+        border-bottom: 3px solid darkseagreen;
+    }
+    ul {
+        list-style: none;
+    }
+
+    body {
+        font-family: monospace;
+    }
+
+</style>
+
+</html>

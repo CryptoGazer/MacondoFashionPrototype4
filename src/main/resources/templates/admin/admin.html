@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title th:text="${title}"></title>
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+<header th:insert="~{blocks/header :: header}"></header>
+
+<!--padding-right percentage will after all depend on the longest line of the following text under the h1 label-->
+<div class="container mt-5" style="padding-left: 3rem; padding-right: 45%">
+    <h1 class="head-border-bottom" style="white-space: pre">Admin page</h1>
+    <br>
+        <ul>
+            <li>
+                <a class="text-dark" href="/admin/databases">
+                    <h3>
+                        Enter the Databases
+                    </h3>
+                </a>
+            </li>
+            <li>
+                <a class="text-dark" href="/admin/categories">
+                    <h3>
+                        Show Categories                        
+                    </h3>
+                </a>
+            </li>
+            <li>
+                <a class="text-dark" href="/admin/ways-of-payment">
+                    <h3>
+                        Manage the Ways of Payment
+                    </h3>
+                </a>
+            </li>
+        </ul>
+</div>
+
+<div th:insert="~{blocks/footer :: footer}"></div>
+
+
+
+</body>
+
+<style>
+    body {
+        font-family: monospace;
+    }
+    
+    header {
+        position: sticky;
+        top: 0;
+        background: #fff;
+        z-index: 3;
+    }
+
+    .head-border-bottom {
+        border-bottom: 3px solid darkseagreen;
+    }
+
+    ul {
+        list-style: square;
+        font-size: 2rem;
+    }
+
+    li {
+        padding-top: 15px;
+    }
+</style>
+
+</html>

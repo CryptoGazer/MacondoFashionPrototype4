@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<header th:insert="~{blocks/header :: header}"></header>
+
+<!--padding-right percentage will after all depend on the longest line of the following text under the h1 label-->
+<div class="container mt-5" style="padding-left: 3rem; padding-right: 23%">
+    <h1 class="head-border-bottom" style="white-space: pre" th:text="'Page of ' + ${productID} + '(ID) product'"></h1>
+    <br>
+    <ul>
+        <li>
+            <h1>Properties of a Product</h1>
+        </li>
+        <li>
+            <a class="text-dark" href="/admin/databases/products-database">
+                <h4>Return to the Previous Page</h4>
+            </a>
+        </li>
+        <ul>
+            <li>
+                <h3 th:text="'productID: ' + ${product.getProductId()}"></h3>
+            </li>
+            <li>
+                <h3 th:text="'name: ' + ${product.getName()}"></h3>
+            </li>
+            <li>
+                <h3 th:text="'price: ' + ${product.getPrice()}"></h3>
+            </li>
+            <li>
+                <h3 th:text="'category: ' + ${product.getCategory()}"></h3>
+            </li>
+            <li>
+                <h3 th:text="'sex: ' + ${product.getSex()}"></h3>
+            </li>
+            <li>
+                <h3 th:text="'description: ' + ${product.getDescription()}"></h3>
+            </li>
+            <li>
+                <h3 th:text="'quantity: ' + ${product.getQuantity()}"></h3>
+            </li>
+            <li>
+                <h3 th:text="'totalSold: ' + ${product.getTotalSold()}"></h3>
+            </li>
+
+            <li>
+                <h3>image:</h3>
+                <img th:src="'/images/' + ${product.getImage().getId()}" height="600px">
+                <br>
+            </li>
+            <br>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#confirmRemove">Remove</button>
+
+            <div class="modal fade" id="confirmRemove" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmRemoveLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="confirmRemoveLabel" th:utext="'Are you sure you want to remove<br>all data about <b>' + ${product.getName('short')} + '</b> from the DB?'"></h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <form th:action="'/admin/databases/products-database/' + ${product.getProductId()} + '/remove'" method="post">
+                            <button type="submit" class="btn btn-primary">Remove</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ul>
+    </ul>
+    
+</div>
+
+<div th:insert="~{blocks/footer :: footer}"></div>
+
+
+
+</body>
+
+<!-- <script>
+    function retrieveDataByID() {
+        var attributeValue = document.getElementById("ID").value;
+        window.location.href = "/admin/databases/products-database/product-details";
+    }
+</script> -->
+
+<style>
+    body {
+        font-family: monospace;
+    }
+
+    header {
+        position: sticky;
+        top: 0;
+        background: #fff;
+        z-index: 3;
+    }
+
+    .head-border-bottom {
+        border-bottom: 3px solid darkseagreen;
+    }
+
+    ul {
+        list-style: square;
+        /* font-size: 2rem; */
+    }
+
+    li {
+        padding-top: 15px;
+        white-space: nowrap;
+        font-size: 2rem;
+    }
+
+    button {
+        white-space: nowrap;
+    }
+
+    .btn-outline-secondary {
+        --bs-border-radius: 0;
+        --bs-btn-font-size: 1.4rem;
+        --bs-btn-padding-x: 1em;
+        --bs-btn-padding-y: 0.7rem;
+        width: 8rem;
+    }
+
+    .form-control {
+        font-size: 1.25rem;
+        --bs-border-radius: 0;
+    }
+</style>
+
+</html>

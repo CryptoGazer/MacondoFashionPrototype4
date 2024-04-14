@@ -1,0 +1,182 @@
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="en">&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.22/dist/css/uikit.min.css" />&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.22/dist/js/uikit.min.js"></script>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.22/dist/js/uikit-icons.min.js"></script>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;    <title>Test</title>&ndash;&gt;-->
+<!--&lt;!&ndash;    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+<!--&lt;!&ndash;    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;    <script src="https://kit.fontawesome.com/dfb84ec876.js" crossorigin="anonymous"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="container mt-4">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="accordion" id="accordionExample">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="accordion-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                <table>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <h2 class="accordion-header" id="headingOne">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="width: 120px; height: 80px">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    &lt;!&ndash;                                        <img th:src="@{/linemenu.png}" alt="" width="60px">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <i class="fa-solid fa-bars fa-2xl" style="color: #000000; margin-left: 7pt"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </h2>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <h2>men</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;                </table>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="accordion-body">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                        <div class="accordion" id="sub-accordionExample">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="accordion-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <h2 class="accordion-header" id="sub-headingOne">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sub-collapseOne" aria-expanded="true" aria-controls="collapseOne">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <strong>Clothes</strong>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </h2>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div id="sub-collapseOne" class="accordion-collapse collapse" aria-labelledby="sub-headingOne" data-bs-parent="#sub-accordionExample">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="accordion-body">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                        <div th:each="cl : ${clothesNames}">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                            <ul th:switch="${cl.equals('Coats & Jackets')}">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                                <li th:case="${true}">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                                    <a th:text="${cl}" class="text-dark" th:href="'/' + ${sex} + '/coats-jackets'"></a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                                </li>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                                <li th:case="${false}">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                                    <a th:text="${cl}" class="text-dark" th:href="'/' + ${sex} + '/' + ${cl.toLowerCase()}"></a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                                </li>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                            </ul>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                        </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="accordion-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <h2 class="accordion-header" id="sub-headingTwo">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sub-collapseTwo" aria-expanded="false" aria-controls="sub-collapseTwo">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <strong>Accessories</strong>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </h2>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div id="sub-collapseTwo" class="accordion-collapse collapse" aria-labelledby="sub-headingTwo" data-bs-parent="#sub-accordionExample">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <div class="accordion-body">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                            <ul th:each="ac : ${accessoriesNames}">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                                <li>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                                    <a th:text="${ac}" class="text-dark" href="#"></a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                                </li>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                            </ul>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<style>&ndash;&gt;-->
+<!--&lt;!&ndash;    .button-primary-override:hover,&ndash;&gt;-->
+<!--&lt;!&ndash;    .button-primary-override:active,&ndash;&gt;-->
+<!--&lt;!&ndash;    .button-primary-override:focus,&ndash;&gt;-->
+<!--&lt;!&ndash;    .button-primary-override:visited{&ndash;&gt;-->
+<!--&lt;!&ndash;        background-color: #42A5F5 !important;&ndash;&gt;-->
+<!--&lt;!&ndash;        border-color: #42A5F5 !important;&ndash;&gt;-->
+<!--&lt;!&ndash;        background-image: none !important;&ndash;&gt;-->
+<!--&lt;!&ndash;        border: 0 !important;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+<!--&lt;!&ndash;</style>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--&lt;!&ndash;<html lang="en" xmlns:th="http://www.thymeleaf.org">&ndash;&gt;-->
+<!--<head>-->
+<!--    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
+<!--    <title>product-card</title>-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>-->
+<!--    &lt;!&ndash;  <script src="https://kit.fontawesome.com/dfb84ec876.js" crossorigin="anonymous"></script>&ndash;&gt;-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<table>-->
+<!--    <tbody>-->
+<!--        <tr>-->
+<!--            <td>-->
+<!--                <div style="padding: 20px">-->
+<!--                    &lt;!&ndash;    <a th:href="'/' + ${sex} + '/' + ${name}" class="btn">&ndash;&gt;-->
+<!--                    <a href="#" class="btn">-->
+<!--                        <img src="../static/images/rhodes-trench-coat-natural-coat-blossom-698714.png" style="max-height: 200px; padding-bottom: 10px" alt="alt">-->
+<!--                        <h5 class="text-dark">Trench Coat</h5>-->
+<!--                        <h5 class="text-dark">40$</h5>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <div style="padding: 20px">-->
+<!--                    &lt;!&ndash;    <a th:href="'/' + ${sex} + '/' + ${name}" class="btn">&ndash;&gt;-->
+<!--                    <a href="#" class="btn">-->
+<!--                        <img src="../static/images/rhodes-trench-coat-natural-coat-blossom-698714.png" style="max-height: 200px; padding-bottom: 10px" alt="alt">-->
+<!--                        <h5 class="text-dark">Trench Coat</h5>-->
+<!--                        <h5 class="text-dark">40$</h5>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--        </tr>-->
+
+<!--    </tbody>-->
+<!--</table>-->
+
+<!--</body>-->
+
+<!--<style>-->
+<!--    .btn {-->
+<!--       &#45;&#45;bs-border-radius: 0.2rem;-->
+<!--       &#45;&#45;bs-btn-border-color: #c6c6c6;-->
+<!--       &#45;&#45;bs-btn-hover-border-color: black;-->
+<!--    }-->
+<!--</style>-->
+
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrieve Data from Input</title>
+</head>
+<body>
+
+<label for="myInput">Enter your name:</label>
+<input type="text" id="myInput">
+<button onclick="retrieveData()">Retrieve Data</button>
+
+<script>
+    function retrieveData() {
+        var attributeValue = document.getElementById('myInput').value;
+
+        if (attributeValue === 'page1') {
+            // Redirect to page1
+            window.location.href = '/page1';
+        } else if (attributeValue === 'page2') {
+            // Redirect to page2
+            window.location.href = '/page2';
+        } else {
+            // Default redirect or handle other cases
+            window.location.href = '/defaultPage';
+        }
+    }
+</script>
+
+</body>
+</html>
