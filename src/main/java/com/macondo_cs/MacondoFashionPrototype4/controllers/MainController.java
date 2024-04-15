@@ -158,6 +158,7 @@ public class MainController {
             modelAndView.addObject("price", product.getPrice());
             modelAndView.addObject("productQuantity", product.getQuantity());
             modelAndView.addObject("image", product.getImage());
+            modelAndView.addObject("descriptiom", product.getDescription());
             return modelAndView;
         }
         return new ModelAndView("error");
