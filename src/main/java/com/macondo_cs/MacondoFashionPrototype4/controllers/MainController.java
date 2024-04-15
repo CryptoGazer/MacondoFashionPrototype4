@@ -115,9 +115,9 @@ public class MainController {
                     log.info("\nProductsSex: {}\n{}\n\n", products.get(j).getSex(), products.toString());
                     if (products.get(j).getSex() == intSex) {
                         productsTable.get(i).add(products.get(j));
+                        k++;
                     }
                     j++;
-                    k++;
                 }
             }
 
