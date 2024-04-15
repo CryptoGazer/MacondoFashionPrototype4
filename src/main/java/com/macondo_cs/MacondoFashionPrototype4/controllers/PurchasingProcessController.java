@@ -87,7 +87,7 @@ public class PurchasingProcessController {
         modelAndView.addObject("title", String.format("%s-cart", userName));
         modelAndView.addObject("cart", currentCart);
         modelAndView.addObject("isEmpty", cartIsEmpty);
-        modelAndView.addObject("productValues", ServiceFunctionality.cartHeaders);
+        modelAndView.addObject("cartHeaders", ServiceFunctionality.cartHeaders);
 
         return modelAndView;
     }
@@ -128,11 +128,10 @@ public class PurchasingProcessController {
         ModelAndView modelAndView = new ModelAndView("redirect:/");
         Long userId = userRepository.findByName(userName).get().getUserId();
         List<Cart> cart = cartRepository.findByUserId(userId);
+        User user = userRepository.findById(userId).get();
         for (Cart subCart : cart) {
-            Long subCartId = subCart.getId();
-            productService.saveCart(subCartId);
+            productService.saveCart(subCart, user);
         }
-
         return modelAndView;
     }
 
