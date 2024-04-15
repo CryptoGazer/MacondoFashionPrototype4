@@ -191,12 +191,13 @@ public class ProductService {
     }
 
     @Transactional
-    public void saveCart(Long existingCartId) {
-        Cart existingCart = cartRepository.findById(existingCartId).get();
-        if (existingCart != null) {
-            existingCart.setIsFinished(true);
-            cartRepository.save(existingCart);
-        }
+    public void saveCart(Cart existingCart, User existingUser) {
+        existingUser.setTotalBought(existingUser.getTotalBought() + existingCart.getQuantity());
+        existingUser.setTotalSpent(existingUser.getTotalSpent() + existingCart.getSum());
+        existingCart.setIsFinished(true);
+
+        cartRepository.save(existingCart);
+        userRepository.save(existingUser);
     }
 
     public Product getProductById(Long id) {
