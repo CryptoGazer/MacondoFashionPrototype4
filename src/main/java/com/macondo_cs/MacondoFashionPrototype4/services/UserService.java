@@ -55,7 +55,7 @@ public class UserService {
         user.setDatetimeRegirested();
         user.setTotalBought(0);
         user.setTotalSpent(0);
-        user.setRoles("ROLE_USER, ROLE_ADMIN");
+        user.setRoles("ROLE_USER");
         userRepository.save(user);
     }
 
