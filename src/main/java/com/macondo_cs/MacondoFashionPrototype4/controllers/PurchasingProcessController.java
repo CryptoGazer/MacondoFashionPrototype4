@@ -75,10 +75,16 @@ public class PurchasingProcessController {
         ModelAndView modelAndView = new ModelAndView("cart");
         Long userId = userRepository.findByName(userName).get().getUserId();
         List<Cart> cart = cartRepository.findByUserId(userId);
-        boolean cartIsEmpty = cart.isEmpty();
+        List<Cart> currentCart = new ArrayList<>();
+        for (Cart subCart : cart) {
+            if (!subCart.getIsFinished()) {
+                currentCart.add(subCart);
+            }
+        }
+        boolean cartIsEmpty = currentCart.isEmpty();
 
         modelAndView.addObject("title", String.format("%s-cart", userName));
-        modelAndView.addObject("cart", cart);
+        modelAndView.addObject("cart", currentCart);
         modelAndView.addObject("isEmpty", cartIsEmpty);
         modelAndView.addObject("productValues", ServiceFunctionality.cartHeaders);
 
