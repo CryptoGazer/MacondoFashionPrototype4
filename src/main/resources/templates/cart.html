@@ -28,22 +28,22 @@
                     <li th:case="${false}">
                         <table>
                             <thead>
-                                <tr th:each="cartHeadersValue : ${cartHeaders}">
+                                <td th:each="cartHeadersValue : ${cartHeaders}">
                                     <h3 th:text="${cartHeadersValue}"></h3>
-                                </tr>
+                                </td>
                             </thead>
                             <tbody th:each="productValues : ${cart}">
-                                <td>
-                                    <h5 th:text="'Name: ' + ${productValues.getProductName()}"></h5>
+                                <td style="padding-right: 15px">
+                                    <h5 th:text="${productValues.getProductName()}"></h5>
+                                </td>
+                                <td style="padding-right: 15px">
+                                    <h5 th:text="${productValues.getSum()} + '$'"></h5>
+                                </td>
+                                <td style="padding-right: 15px">
+                                    <h5 th:text="${productValues.getQuantity()}"></h5>
                                 </td>
                                 <td>
-                                    <h5 th:text="'Sum: ' + ${productValues.getSum()}"></h5>
-                                </td>
-                                <td>
-                                    <h5 th:text="'Quantity: ' + ${productValues.getQuantity()}"></h5>
-                                </td>
-                                <td>
-                                    <h5 th:text="'Price: ' + ${productValues.getProductPrice()} + '$'"></h5>
+                                    <h5 th:text="${productValues.getProductPrice()} + '$'"></h5>
                                 </td>
                             </tbody>
                         </table>
