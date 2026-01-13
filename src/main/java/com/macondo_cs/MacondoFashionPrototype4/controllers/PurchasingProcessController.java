@@ -1,6 +1,7 @@
 package com.macondo_cs.MacondoFashionPrototype4.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,12 +76,18 @@ public class PurchasingProcessController {
         ModelAndView modelAndView = new ModelAndView("cart");
         Long userId = userRepository.findByName(userName).get().getUserId();
         List<Cart> cart = cartRepository.findByUserId(userId);
-        boolean cartIsEmpty = cart.isEmpty();
+        List<Cart> currentCart = new ArrayList<>();
+        for (Cart subCart : cart) {
+            if (!subCart.getIsFinished()) {
+                currentCart.add(subCart);
+            }
+        }
+        boolean cartIsEmpty = currentCart.isEmpty();
 
         modelAndView.addObject("title", String.format("%s-cart", userName));
-        modelAndView.addObject("cart", cart);
+        modelAndView.addObject("cart", currentCart);
         modelAndView.addObject("isEmpty", cartIsEmpty);
-        modelAndView.addObject("productValues", ServiceFunctionality.cartHeaders);
+        modelAndView.addObject("cartHeaders", ServiceFunctionality.cartHeaders);
 
         return modelAndView;
     }
@@ -121,9 +128,9 @@ public class PurchasingProcessController {
         ModelAndView modelAndView = new ModelAndView("redirect:/");
         Long userId = userRepository.findByName(userName).get().getUserId();
         List<Cart> cart = cartRepository.findByUserId(userId);
+        User user = userRepository.findById(userId).get();
         for (Cart subCart : cart) {
-            Long subCartId = subCart.getId();
-            productService.saveCart(subCartId);
+            productService.saveCart(subCart, user);
         }
 
         return modelAndView;

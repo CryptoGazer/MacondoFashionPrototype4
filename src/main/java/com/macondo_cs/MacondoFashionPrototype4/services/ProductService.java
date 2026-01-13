@@ -19,16 +19,16 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class ProductService {
     @Autowired
-    private final ProductRepository productRepository;
+    private final ProductRepository productRepository = null;
 
     @Autowired
-    private final UserRepository userRepository;
+    private final UserRepository userRepository = null;
 
     @Autowired
-    private final CartRepository cartRepository;
+    private final CartRepository cartRepository = null;
     
     @Autowired
-    private final ImageRepository imageRepository;
+    private final ImageRepository imageRepository = null;
 
     public List<Product> listAllProducts() {
         List<Product> products = productRepository.findAll();
@@ -191,12 +191,13 @@ public class ProductService {
     }
 
     @Transactional
-    public void saveCart(Long existingCartId) {
-        Cart existingCart = cartRepository.findById(existingCartId).get();
-        if (existingCart != null) {
-            existingCart.setIsFinished(true);
-            cartRepository.save(existingCart);
-        }
+    public void saveCart(Cart existingCart, User existingUser) {
+        existingUser.setTotalBought(existingUser.getTotalBought() + existingCart.getQuantity());
+        existingUser.setTotalSpent(existingUser.getTotalSpent() + existingCart.getSum());
+        existingCart.setIsFinished(true);
+
+        cartRepository.save(existingCart);
+        userRepository.save(existingUser);
     }
 
     public Product getProductById(Long id) {

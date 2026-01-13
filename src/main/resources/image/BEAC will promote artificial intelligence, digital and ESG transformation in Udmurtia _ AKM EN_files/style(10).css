@@ -1,0 +1,33 @@
+.mobile-nav {
+    list-style: none;
+    position: relative;
+    padding: 0;
+}
+
+.mobile-nav-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-item__link {
+    display: block;
+    padding: 15px 50px 15px 0;
+    font-weight: 600;
+    color: #fff;
+}
+
+.mobile-nav-item__link:hover {
+    opacity: 0.7;
+    color: #fff;
+    text-decoration: none;
+}
+
+/*# sourceMappingURL=style.css.map */
+#mobile-nav .switch_lang a{
+  display: block;
+  padding: 15px 50px 15px 0;
+  font-weight: 600;
+  color: #fff;
+}
+#mobile-nav .switch_lang{
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}

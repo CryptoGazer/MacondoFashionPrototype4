@@ -1,0 +1,158 @@
+.l-popup-search__close {
+  padding: 0.3125rem;
+  color: #fff;
+  font-size: 1.25rem;
+  -webkit-transition: all 0.15s;
+  -o-transition: all 0.15s;
+  -moz-transition: all 0.15s;
+  transition: all 0.15s;
+  line-height: 1; }
+  .l-popup-search__close:hover {
+    color: #dc3545; }
+
+.l-popup-search {
+  position: fixed;
+  z-index: 99999;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  -webkit-perspective: 600px;
+     -moz-perspective: 600px;
+          perspective: 600px; }
+  .l-popup-search__inner {
+    position: relative;
+    padding: 6.25rem 0.9375rem 0;
+    -webkit-transform: scale(0.97) rotateX(10deg) translateY(-10px);
+       -moz-transform: scale(0.97) rotateX(10deg) translateY(-10px);
+            transform: scale(0.97) rotateX(10deg) translateY(-10px);
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    -moz-transition: .3s;
+    transition: .3s;
+    opacity: 0; }
+  .l-popup-search.is-open .l-popup-search__inner {
+    -webkit-transform: scale(1) rotateX(0) translateY(0);
+       -moz-transform: scale(1) rotateX(0) translateY(0);
+            transform: scale(1) rotateX(0) translateY(0);
+    opacity: 1; }
+  .l-popup-search__close {
+    position: absolute;
+    position: absolute;
+    top: 34px;
+    right: 34px;
+    font-size: 2.25rem;
+    -webkit-transition: 300ms 0ms;
+    -o-transition: 300ms 0ms;
+    -moz-transition: 300ms 0ms;
+    transition: 300ms 0ms;
+    -webkit-transform: scale(0.2);
+       -moz-transform: scale(0.2);
+        -ms-transform: scale(0.2);
+         -o-transform: scale(0.2);
+            transform: scale(0.2);
+    opacity: 0;
+    z-index: 2; }
+  .l-popup-search.is-open .l-popup-search__close {
+    -webkit-transform: scale(1);
+       -moz-transform: scale(1);
+        -ms-transform: scale(1);
+         -o-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; }
+
+.l-title-search-result {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 1.25rem;
+  margin-top: -0.125rem; }
+
+.b-popup-search-form {
+  position: relative;
+  height: 5rem;
+  margin-bottom: 1.25rem; }
+  .b-popup-search-form__input {
+    width: 100%;
+    height: 5rem;
+    line-height: 5rem;
+    background: rgba(0, 0, 0, 0.6);
+    font-weight: 600;
+    font-size: 1.563rem;
+    border: 0;
+    padding-right: 5rem;
+    padding-left: 1.25rem;
+    color: #fff; }
+    .b-popup-search-form__input:focus, .b-popup-search-form__input:hover {
+      border: 0;
+      outline: 0; }
+  .b-popup-search-form__btn {
+    font-size: 2.188rem;
+    color: #0098f7;
+    position: absolute;
+    right: 2.188rem;
+    top: 1.125rem;
+    background: transparent;
+    -webkit-transition: all 0.15s;
+    -o-transition: all 0.15s;
+    -moz-transition: all 0.15s;
+    transition: all 0.15s;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    cursor: pointer; }
+    .b-popup-search-form__btn:focus, .b-popup-search-form__btn:hover {
+      outline: 0;
+      border: 0;
+      color: #0079c4; }
+
+.b-title-search-item {
+  padding-bottom: 1.875rem; }
+  .b-title-search-item::after {
+    display: block;
+    clear: both;
+    content: ""; }
+  .b-title-search-item:last-child {
+    padding-bottom: 0; }
+  .b-title-search-item__thumb {
+    float: left;
+    margin-right: .9375rem;
+    position: relative; }
+  .b-title-search-item__thumb img {
+    width: 110px; }
+  .b-title-search-item__body {
+    padding-left: 125px; }
+  .b-title-search-item__name {
+    color: #f8f9fa;
+    font-size: 1.125rem;
+    line-height: 1.438rem;
+    padding-top: .3125rem; }
+  .b-title-search-item__name:hover {
+    color: #0098f7;
+    text-decoration: none; }
+  .b-title-search-item__date {
+    margin: .1875rem 0 0;
+    font-size: 80%;
+    color: #adb5bd; }
+
+.mobile-search {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .mobile-search__field, .mobile-search__field:active, .mobile-search__field:focus {
+    margin-right: .5rem;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #fff; }
+  .mobile-search__field::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.6); }
+  .mobile-search .btn {
+    background-color: #212529;
+    color: #fff;
+    width: 25%;
+    font-size: 80%; }
+
+/*# sourceMappingURL=style.css.map */

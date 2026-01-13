@@ -1,0 +1,14 @@
+.l-news-detail .b-news-detail-body{
+    text-align: justify;
+}
+.b-news-detail-body__picture .picture_description{
+    display: flex;
+    justify-content: center;
+    color: #868e96;
+}
+.l-news-detail .page-title{
+    font-size: 2rem;
+}
+.l-news-detail .b-news-detail-body{
+    font-size: 13px;
+}

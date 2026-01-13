@@ -1,0 +1,79 @@
+.btn.btn-primary a{
+    color: #ffffff;
+}
+.bx-auth .bx-auth-note.title{
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+    /*#0098f7*/
+}
+table#table_prices {width: 100%; border-collapse: collapse;text-align: center}
+table#table_prices thead tr {color: #ffffff; font-weight: bold; background: #70AD94;}
+table#table_prices thead tr td {border: 1px solid #01ab73;}
+table#table_prices tbody tr td {border: 1px solid #e8e9eb;}
+table#table_prices tbody tr:nth-child(2n) {background: #f4f4f4;}
+table#table_prices tbody tr:hover {background: #ebffe8;}
+#oformlenie_podpiski select.inputselect{
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.625;
+    color: #495057;
+    background-color: #fff;
+    -o-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-border-radius: .125rem;
+    border-radius: .125rem;
+    -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    -o-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -moz-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+}
+body{
+    overflow-x: hidden;
+}
+
+#oformlenie_podpiski td {
+    padding: 5px;
+}
+#table_buttons tr td:first-child {
+    padding: 10px 20px 10px 0;
+    text-align: justify;
+}
+#table_buttons .btn.btn-primary {
+    width: 190px;
+}
+#sticky-header.is-sticky .b-head-logo img{
+    height: 38px;
+}
+@media (max-width: 768px) {
+    #table_buttons tr{
+        display: flex;
+        flex-direction: column;
+    }
+    #table_buttons .btn.btn-primary {
+        display: flex;
+        margin: auto;
+    }
+}
+.l-side-aside__container .l-section__items a{
+    color: #ffffff;
+}
+.l-head-light .l-head-light__container .switch_lang{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.l-head-light .l-head-light__container .switch_lang img{
+    width: 21px;
+    height: 14px;
+    margin-right: 5px;
+    box-shadow: 0 0 1px black;
+}
+.title-search-result{
+    z-index: 99999;
+}
