@@ -132,7 +132,6 @@ public class PurchasingProcessController {
         for (Cart subCart : cart) {
             productService.saveCart(subCart, user);
         }
-
         return modelAndView;
     }
 
